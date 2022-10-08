@@ -1,0 +1,17 @@
+.char {
+  width: 22px;
+  height: 22px;
+  margin: 1px;
+}
+
+.correct {
+  background-color: #01FF70;
+}
+
+.misplaced {
+  background-color: #FFDC00;
+}
+
+.incorrect {
+  background-color: rgba(0,0,0, 0.5);
+}

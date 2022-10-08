@@ -8,6 +8,8 @@ import type { Score } from './models'
 
 type DB = ReturnType<typeof openDB> extends Promise<infer D> ? D : never
 
+const SYNC_RATE = 4000
+
 // NOTE: top-level await will be cool someday
 setupBackgroundSyncProcess().catch(e => {
   console.error('error setting up the background sync process', e)
@@ -19,13 +21,14 @@ async function setupBackgroundSyncProcess(): Promise<void> {
   // TODO: poll…
   while(true) {
     await sync(db)
+    // Polling is no fun, we should set up something better like sse :) 
+    await new Promise(r => setTimeout(r, SYNC_RATE));
   }
   
 }
 
 async function sync(db: DB): Promise<void> {
   console.group('sync')
-  console.debug('hanna')
   const response = await getScores()
 
   console.debug('getScores', response)
