@@ -16,7 +16,7 @@ export const ScoresList: FunctionalComponent<Props> = ({ scores }) => {
   return (
     <ul class={styles.list}>
       {/*scores.map(score => <ScoreItem key={score.id} score={score} />)*/}
-      {scores.map(score => <WordleItem score={score}/>)}
+      {scores.map(score => <WordleItem score={score} />)}
     </ul>
   )
 }

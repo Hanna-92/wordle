@@ -19,12 +19,11 @@ async function setupBackgroundSyncProcess(): Promise<void> {
   const db = await openDB()
 
   // TODO: poll…
-  while(true) {
+  while (true) {
     await sync(db)
-    // Polling is no fun, we should set up something better like sse :) 
-    await new Promise(r => setTimeout(r, SYNC_RATE));
+    // Polling is no fun, we should set up something better like sse :)
+    await new Promise(r => setTimeout(r, SYNC_RATE))
   }
-  
 }
 
 async function sync(db: DB): Promise<void> {

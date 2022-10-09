@@ -6,7 +6,7 @@ export async function getScores(): Promise<ScoresResponse> {
   console.debug('getting scores…')
 
   // TODO: const response = await getRealScoresFromNetwork(…)
-  const response = await getRealScoresFromNetwork()//await getAllInitialResponse()
+  const response = await getRealScoresFromNetwork() // await getAllInitialResponse()
 
   if (response.ok) {
     const json = await response.json()
