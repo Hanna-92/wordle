@@ -13,3 +13,14 @@
 .completed {
     color: #01FF70;
 }
+
+.headercontainer {
+    display: flex;
+    flex-direction: row;
+}
+
+i {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20px;
+}

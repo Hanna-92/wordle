@@ -1,0 +1,27 @@
+.header {
+    width: 100%;
+    text-align: center;
+    border-bottom: 3px solid rgba(0,0,0, 0.05);
+    padding: 10px;
+}
+
+.wordlelogo {
+    top: -10px;
+    position: relative;
+}
+
+.heart {
+    position: relative;
+    margin-right: 20px;
+    font-size: 55px;
+    animation: heart 3s infinite steps(1, end) ;
+    color: var(--brand-red);
+}
+
+@keyframes heart {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(25deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-25deg); }
+    100% { transform: rotate(0deg); }
+}
