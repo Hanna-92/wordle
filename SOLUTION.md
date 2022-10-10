@@ -18,4 +18,6 @@ There are a few things here that I think would be important to change in the fut
 
 2. The code currently polls for new API results every 4 seconds which is kinda not amazing. If we had a serverside function to fetch these results as described above, we could probably also extend it to use SSE to push updates to the client, rather than the client polling. To do this we might store the last results for a user on the serverside and then poll every so often and compare with the previous results as we currently do in the clientside, if the results were different we could notify the client via SSE. This'd save some network load on the client and we could also potentially remove a bit of the logic around the redrawing
 
-3. There's also way more styling I'd like to do but I decided to stop so I could go eat dinner 🍽️
+3. This code is also currently not super accessible. It's very much only usable if you can see the page. It would be nice to update all of the components to use more relevant HTML elements (e.g. currently the wordle attempts are all just differently coloured &lt;div&gt; tags, and they are under a &lt;ul&gt; tag). In addition, it would be good to add the appropriate aria values to each of them as well as aria alerts when new data is received from the API
+
+4. There's also way more styling I'd like to do but I decided to stop so I could go eat dinner 🍽️
