@@ -8,10 +8,10 @@ if [[ -z "$AUTH_TOKEN" ]]; then
 fi
 
 body='{
-  "id": 265,
+  "id": 268,
   "date": "2022-03-11",
-  "word": "treet",
-  "tries": ["bonus", "pause", "sleet"]
+  "word": "sweet",
+  "tries": ["eerie"]
 }'
 
 curl -i -XPOST \

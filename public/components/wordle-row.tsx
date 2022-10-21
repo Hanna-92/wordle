@@ -13,17 +13,39 @@ export type WordleCharValue =
   | 'incorrect'
 
 export const WordleRow: FunctionalComponent<Props> = ({ target, guess }) => {
-  const values = guess.split('').map((c, i) => {
-    if (target.charAt(i) === c) {
-      return 'correct'
-    } else if (target.indexOf(c) !== -1) {
-      return 'misplaced'
+
+  // Iterate through the target and check the guess characters
+
+  // Nymph
+  // Mommy
+  const values = Array<WordleCharValue>(target.length).fill('incorrect')
+
+  target.split('').forEach((c, i) => {
+      if(guess.charAt(i) === c) {
+        values[i] = 'correct'
+      } else {
+        const chars = guess.split('')
+        for(var j = 0; j <chars.length; j++) {
+          const attempt = chars[j]
+          if(c === attempt && values[j] === 'incorrect') {
+            values[j] = 'misplaced'
+            break;
+          }
+      }
     }
-    return 'incorrect'
-  })
+  }) 
+
+  // const values = guess.split('').map((c, i) => {
+  //   if (target.charAt(i) === c) {
+  //     return 'correct'
+  //   } else if (target.indexOf(c) !== -1) {
+  //     return 'misplaced'
+  //   }
+  //   return 'incorrect'
+  // })
   return (
     <div class={styles.row}>
-      {values.map(val => <WordleChar charVal={val} />)}
+      {values.map((val, i) => <WordleChar charVal={val} letter={guess.charAt(i)}/>)}
     </div>
   )
 }

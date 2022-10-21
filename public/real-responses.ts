@@ -4,6 +4,6 @@
 export const getRealScoresFromNetwork = async () =>
   await fetch('https://wordle.shareup.fun/scores', {
     headers: new Headers({
-      'X-Authorization': '<TOKEN GOES HERE>'
+      'X-Authorization': 'HANNA-GREAVES-6A736823'
     })
   })

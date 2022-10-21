@@ -20,7 +20,11 @@ async function setupBackgroundSyncProcess(): Promise<void> {
 
   // TODO: poll…
   while (true) {
-    await sync(db)
+    try {
+      await sync(db)
+    } catch(e){
+      console.error(`Issue with sync ${e.message}`)
+    }
     // Polling is no fun, we should set up something better like sse :)
     await new Promise(r => setTimeout(r, SYNC_RATE))
   }
@@ -28,7 +32,9 @@ async function setupBackgroundSyncProcess(): Promise<void> {
 
 async function sync(db: DB): Promise<void> {
   console.group('sync')
-  const response = await getScores()
+  // Can throw if there is a network aissue
+  try {
+    const response = await getScores()
 
   console.debug('getScores', response)
 
@@ -85,6 +91,7 @@ async function sync(db: DB): Promise<void> {
     } finally {
       console.debug('aborted tx')
     }
+  }
   } finally {
     console.groupEnd()
   }

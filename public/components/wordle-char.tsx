@@ -4,6 +4,7 @@ import { WordleCharValue } from './wordle-row'
 
 type WordleCharProps = {
   charVal: WordleCharValue
+  letter: string
 }
 
 const valToStyle = (charVal: WordleCharValue) => {
@@ -17,6 +18,6 @@ const valToStyle = (charVal: WordleCharValue) => {
   }
 }
 
-export const WordleChar: FunctionalComponent<WordleCharProps> = ({ charVal }) => (
-  <div class={`${styles.wchar} ${valToStyle(charVal)}`} />
+export const WordleChar: FunctionalComponent<WordleCharProps> = ({ charVal, letter }) => (
+  <div class={`${styles.wchar} ${valToStyle(charVal)}`}>{letter}</div>
 )

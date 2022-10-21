@@ -7,7 +7,20 @@ type Props = {
   score: Score
 }
 
+
+/**
+ * Difficult test case: 
+ * 
+ * Target: Nymph
+ * Guess : Mommy 
+ * 
+ * Middle m should be green because it was in the correct spot 
+ * Other m's should be incorrect because there was only one m and it has already been used
+ */
 export const WordleItem: FunctionalComponent<Props> = ({ score }) => {
+  if(score.id) {
+    console.log('debug')
+  }
   const solved = score.tries[score.tries.length - 1] === score.word
   const failed = !solved && score.tries.length === 6
   let style = styles.attempted
