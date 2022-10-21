@@ -11,7 +11,7 @@
 }
 
 .completed {
-    color: #01FF70;
+    color: #00913f;
 }
 
 .headercontainer {
@@ -23,4 +23,7 @@ i {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 20px;
+}
+.collapsed {
+  height: 0px;
 }

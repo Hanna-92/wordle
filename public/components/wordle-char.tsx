@@ -19,5 +19,5 @@ const valToStyle = (charVal: WordleCharValue) => {
 }
 
 export const WordleChar: FunctionalComponent<WordleCharProps> = ({ charVal, letter }) => (
-  <div class={`${styles.wchar} ${valToStyle(charVal)}`}>{letter}</div>
+  <div class={`${styles.wchar} ${valToStyle(charVal)}`}></div>
 )

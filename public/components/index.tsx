@@ -21,7 +21,15 @@ export const Index: FunctionalComponent<Props> = ({ preloadedScores }) => {
   }, [db])
 
   const bg = useBackground()
-  bg?.addEventListener('message', _ => refetch())
+  useEffect(() => {
+    const scoresUpdatedHandler = (message: any) => {
+      if(message.data['type'] === 'scoresUpdated') {
+        refetch()
+      }
+    }
+    bg?.addEventListener('message', scoresUpdatedHandler)
+    return () => bg?.removeEventListener('message', scoresUpdatedHandler)
+  }, [bg, refetch])
 
   return (
     <Layout>
@@ -40,6 +48,7 @@ export const Index: FunctionalComponent<Props> = ({ preloadedScores }) => {
               </path>
             </g>
           </svg>
+        
           <i class={`${styles.heart} fa-solid fa-heart`}></i>
           <img
             class={styles.wordlelogo}
@@ -48,6 +57,7 @@ export const Index: FunctionalComponent<Props> = ({ preloadedScores }) => {
           />
         </h1>
         <Switch hasDB={!!db} scores={scores} />
+        <img  class={styles.funpicture} src="https://shareup.app/hero-image.png" alt="" width="200" height="200"></img>
       </main>
     </Layout>
   )

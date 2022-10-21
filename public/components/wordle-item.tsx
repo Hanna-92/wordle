@@ -1,4 +1,5 @@
 import type { FunctionalComponent } from 'preact'
+import {useState} from 'preact/hooks'
 import type { Score } from '../models'
 import styles from './wordle-item.module.css'
 import { WordleRow } from './wordle-row'
@@ -21,13 +22,14 @@ export const WordleItem: FunctionalComponent<Props> = ({ score }) => {
   if(score.id) {
     console.log('debug')
   }
+  const [collapsed, setCollapsed] = useState(false)
   const solved = score.tries[score.tries.length - 1] === score.word
   const failed = !solved && score.tries.length === 6
   let style = styles.attempted
   if (solved) { style = styles.completed }
   else if (failed) { style = styles.failed }
   return (
-    <div class={`${styles.wordle} ${style}`}>
+    <div class={`${styles.wordle} ${style} ${collapsed ? styles.collapsed : ''}`} onClick={() => setCollapsed(!collapsed)}>
       <div class={styles.headercontainer}>
         <h2 class={styles.header}>Puzzle {score.id} ({score.tries.length}/6)</h2>
         {solved && <i class='fa-solid fa-check'></i>}

@@ -16,11 +16,10 @@ export const WordleRow: FunctionalComponent<Props> = ({ target, guess }) => {
 
   // Iterate through the target and check the guess characters
 
-  // Nymph
-  // Mommy
   const values = Array<WordleCharValue>(target.length).fill('incorrect')
 
-  target.split('').forEach((c, i) => {
+  for(var i = 0; i < target.length; i++) {
+    const c = target.charAt(i)
       if(guess.charAt(i) === c) {
         values[i] = 'correct'
       } else {
@@ -33,7 +32,7 @@ export const WordleRow: FunctionalComponent<Props> = ({ target, guess }) => {
           }
       }
     }
-  }) 
+  }
 
   // const values = guess.split('').map((c, i) => {
   //   if (target.charAt(i) === c) {
